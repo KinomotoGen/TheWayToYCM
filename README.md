@@ -97,18 +97,75 @@ python3 install.py --clangd-completer
 
 please don't do python3 install.py only,because it will compiling YCM without semantic support for C-family languages,that wil be bad,so just please don't!!!
 
-# 9.
+# 9.在.vimrc中配置YouCompleteMe：
 
+" ===
+" === You Complete ME
+" ===
+nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap g/ :YcmCompleter GetDoc<CR>
+nnoremap gt :YcmCompleter GetType<CR>
+nnoremap gr :YcmCompleter GoToReferences<CR>
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif " 离开插入模式后自动关闭预览窗口
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_complete_in_comments=1                   		" 补全功能在注释中同样有效
+let g:ycm_complete_in_strings=0							" 在字符串输入中也能补全
+inoremap <expr><CR> pumvisible() ? "\<C-y>" : "\<CR>"
+let g:ycm_confirm_extra_conf=0                     		" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
+let g:ycm_collect_identifiers_from_tags_files=1    		" 开启 YCM 标签补全引擎
+let g:ycm_cache_omnifunc=0                         		" 禁止缓存匹配项，每次都重新生成匹配项
+let g:ycm_seed_identifiers_with_syntax=1           		" 语法关键字补全
+let g:ycm_goto_buffer_command = 'vertical-split'   		" 跳转打开左右分屏
+let g:ycm_seed_identifiers_with_syntax=0				" 语法关键字补全
+let g:ycm_keep_logfiles = 1
+let g:ycm_log_level = 'debug'
+let g:ycm_error_symbol = '✗'							" 同时，YCM可以打开location-list来显示警告和错误的信息:YcmDiags
+let g:ycm_warning_symbol = '⚠'
 
+# 10.配置.ycm_extra_conf.py，将此文件放在项目的根目录下：
 
+只需更改flags中的参数即可，每个项目头文件路径不一定相同，因此每个项目都要重新配置
 
+flags = [
+# THIS IS IMPORTANT! Without a "-std=<something>" flag, clang won't know which
+# language to use when compiling headers. So it will guess. Badly. So C++
+# headers will be compiled as C headers. You don't want that so ALWAYS specify
+# a "-std=<something>".
+# For a C project, you would set this to something like 'c99' instead of
+# 'c++11'.
+'-std=gnu99',
+# ...and the same thing goes for the magic -x option which specifies the
+# language that the files to be compiled are written in. This is mostly
+# relevant for c++ headers.
+# For a C project, you would set this to 'c' instead of 'c++'.
+'-x',
+'c',
+'-isystem',
+'/usr/include',
+'-isystem',
+'/usr/local/arm/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf/include',
+'-isystem',
+'/home/maxwell/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/clang/lib/clang/10.0.0/include',
+'-isystem',
+'/home/maxwell/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/llvm/include/clang-c',
+#My own project's .h path 
+'-I',
+'./imx6ul',
+'-I',
+'./bsp/beep',
+'-I',
+'./bsp/clk',
+'-I',
+'./bsp/delay',
+'-I',
+'./bsp/gpio',
+'-I',
+'./bsp/key',
+'-I',
+'./bsp/led'
+]
 
-
-
-
-
-
-
-
+# 至此，所有步骤都已经完成，可以使用YouCompleteMe在vim中实现代码补全，函数跳转等操作了，但是问题还是有的，从未被调用过的变量，函数名，结构体等，一开始并不能补全，未找到原因。另外，vim8.2-setup.sh和.vimrc和.ycm_extra_conf.py本人会上传。
 
 
