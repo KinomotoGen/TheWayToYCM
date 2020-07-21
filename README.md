@@ -78,7 +78,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/vim-easy-align'        “put the plug you want to install to the ‘ ’
+Plug 'ycm-core/YouCompleteMe'        “input the plug you want to install to the ‘ ’，I just input the YouCompleteMe that I want to install.
 
 call plug#end()
 
@@ -88,12 +88,16 @@ call plug#end()
 
 1.Install cmake, vim and python
 
+sudo apt install build-essential cmake python3-dev
 
+2.Compiling YCM with semantic support for C-family languages through clangd:
 
+cd ~/.vim/bundle/YouCompleteMe
+python3 install.py --clangd-completer
 
+please don't do python3 install.py only,because it will compiling YCM without semantic support for C-family languages,that wil be bad,so just please don't!!!
 
-
-
+# 9.
 
 
 
