@@ -156,6 +156,6 @@ please don't do “python3 install.py” only,because it will compiling YCM with
     './bsp/led'
     ]
 
-至此，所有步骤都已经完成，可以使用YouCompleteMe在vim中实现代码补全，函数跳转等操作了，但是问题还是有的，从未被调用过的变量，函数名，结构体等，一开始并不能补全，未找到原因。另外，vim8.2-setup.sh和.vimrc和.ycm_extra_conf.py本人会上传。
+至此，所有步骤都已经完成，可以使用YouCompleteMe在vim中实现代码补全，函数跳转等操作了，但是问题还是有的，从未被调用过的变量，函数名，结构体等，一开始并不能补全，未找到原因。另外，vim8.2-setup.sh和.vimrc和.ycm_extra_conf.py本人已经上传。
 
 
