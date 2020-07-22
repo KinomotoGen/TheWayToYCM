@@ -125,7 +125,8 @@ please don't do “python3 install.py” only,because it will compiling YCM with
 
 # 10.配置.ycm_extra_conf.py，将此文件放在项目的根目录下：
 
-只需更改flags中的参数即可，每个项目头文件路径不一定相同，因此每个项目都要重新配置
+只需更改flags中的参数即可，每个项目头文件路径不一定相同，因此每个项目都要重新配置。
+此处需要注意的是，不能使用～/来代替/home/maxwell（用户根目录），会导致无法识别！！！
 
     flags = [
     '-std=gnu99',
