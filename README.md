@@ -95,7 +95,7 @@ This is a note for write my road that how to install the vim8.2 and YouCompletem
     cd ~/.vim/bundle/YouCompleteMe
     python3 install.py --clangd-completer
 
-please don't do python3 install.py only,because it will compiling YCM without semantic support for C-family languages,that wil be bad,so just please don't!!!
+please don't do “python3 install.py” only,because it will compiling YCM without semantic support for C-family languages,that wil be bad,so just please don't!!!
 
 # 9.在.vimrc中配置YouCompleteMe：
 
